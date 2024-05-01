@@ -119,6 +119,7 @@ def get_icon(icon_path, icon_name, size=None, color=None, extra_classes=None):
     else:
         warnings.warn("⚠️settings.BS_ICONS_CACHE NOT SET!")
 
+
     # cached icon doesn't exist or no cache configured, create and return icon
     try:
         resp = requests.get(icon_path, timeout=20)
@@ -159,7 +160,7 @@ def bs_icon(icon_name, size=None, color=None, extra_classes=None):
     bootstrap_icons_path = getattr(
         settings,
         'MD_ICONS_BASE_PATH',
-        os.path.join(settings.STATIC_URL, 'bootstrap'https://cdn.jsdelivr.net/npm/@mdi/svg@7.2.96/'
+        os.path.join(settings.STATIC_URL, 'bootstrap'),
     )
     bootstrap_icons_path = f"{settings.BS_ICONS_CUSTOM_PATH}"
 
