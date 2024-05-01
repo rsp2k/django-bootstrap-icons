@@ -116,6 +116,8 @@ def get_icon(icon_path, icon_name, size=None, color=None, extra_classes=None):
             # icon exists in cache, use that
             with open(cache_file, 'r', encoding="utf-8") as icon_file:
                 return icon_file.read()
+    else:
+        warnings.warn("⚠️settings.BS_ICONS_CACHE NOT SET!")
 
     # cached icon doesn't exist or no cache configured, create and return icon
     try:
@@ -154,14 +156,16 @@ def bs_icon(icon_name, size=None, color=None, extra_classes=None):
     if icon_name is None:
         return ''
 
-    base_url = getattr(
+    bootstrap_icons_path = getattr(
         settings,
-        'BS_ICONS_BASE_URL',
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/',
+        'MD_ICONS_BASE_PATH',
+        os.path.join(settings.STATIC_URL, 'bootstrap'https://cdn.jsdelivr.net/npm/@mdi/svg@7.2.96/'
     )
-    icon_path = f'{base_url}icons/{icon_name}.svg'
+    bootstrap_icons_path = f"{settings.BS_ICONS_CUSTOM_PATH}"
 
-    svg = get_icon(icon_path, icon_name, size, color, extra_classes)
+    svg = f"""<svg class="bi {extra_classes}" width="{size}" height="{size}" fill="currentColor">
+  <use xlink:href="{bootstrap_icons_path}#{icon_name}"/>
+</svg>"""
     return mark_safe(svg)
 
 
