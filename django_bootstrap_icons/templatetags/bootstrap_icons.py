@@ -160,7 +160,7 @@ def bs_icon(icon_name, size=None, color=None, extra_classes=None):
     bootstrap_icons_path = getattr(
         settings,
         'BS_ICONS_BASE_PATH',
-        os.path.join(settings.STATIC_URL, 'bootstrap'),
+        os.path.join(settings.STATIC_URL, 'bootstrap-icons.svg'),
     )
 
     svg = f"""<svg class="bi bi-{icon_name} {extra_classes}" width="{size}" height="{size}" fill="currentColor">
