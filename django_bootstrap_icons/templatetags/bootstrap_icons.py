@@ -164,7 +164,7 @@ def bs_icon(icon_name, size=None, color=None, extra_classes=None):
     )
     bootstrap_icons_path = f"{settings.BS_ICONS_CUSTOM_PATH}"
 
-    svg = f"""<svg class="bi {extra_classes}" width="{size}" height="{size}" fill="currentColor">
+    svg = f"""<svg class="bi bi-{icon_name} {extra_classes}" width="{size}" height="{size}" fill="currentColor">
   <use xlink:href="{bootstrap_icons_path}#{icon_name}"/>
 </svg>"""
     return mark_safe(svg)
